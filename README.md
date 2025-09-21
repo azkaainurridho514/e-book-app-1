@@ -1,16 +1,20 @@
-# e_book_app
+# 📚 E-Book App (Frontend)
 
-A new Flutter project.
+Aplikasi membaca buku digital berbasis **Flutter**.  
+Proyek ini masih dalam tahap awal dan baru mencakup **UI/Frontend**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Fitur UI yang Sudah Dibuat
+- 🏠 **Halaman Beranda** — Menampilkan daftar buku populer & terbaru  
+- 🔍 **Pencarian Buku** — UI untuk mencari judul/penulis buku  
+- 📖 **Detail Buku** — Informasi detail (cover, judul, deskripsi, penulis)  
+- 📑 **Reader Page** — Tampilan membaca e-book (mockup)  
+- ❤️ **Favorit/Bookmark** — UI untuk menandai buku favorit  
+- 👤 **Profil Pengguna** — Halaman akun user  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+- **Framework:** Flutter (Dart)  
+- **UI Toolkit:** Material Design + Custom Widgets  

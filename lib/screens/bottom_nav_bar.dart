@@ -6,6 +6,7 @@ import 'package:e_book_app/themes.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
+  static const nameRoute = '/';
   const BottomNavBar({super.key});
 
   @override
@@ -81,18 +82,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
     }
 
     return Scaffold(
-        bottomNavigationBar: customButtomNav(),
-        body: Stack(
-          children: _screens
-              .asMap()
-              .map((i, screen) => MapEntry(
-                  i,
-                  Offstage(
-                    offstage: _selectedIndex != i,
-                    child: screen,
-                  )))
-              .values
-              .toList(),
-        ));
+      bottomNavigationBar: customButtomNav(),
+      body: Stack(
+        children: _screens
+            .asMap()
+            .map(
+              (i, screen) => MapEntry(
+                i,
+                Offstage(
+                  offstage: _selectedIndex != i,
+                  child: screen,
+                ),
+              ),
+            )
+            .values
+            .toList(),
+      ),
+    );
   }
 }

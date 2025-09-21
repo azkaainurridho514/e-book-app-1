@@ -12,6 +12,7 @@ Color greyColorRecentBook = Color(0xFFAFAFAF);
 Color greyColorInfo = Color(0xFFF7F7F7);
 Color dividerColor = Color(0xFF6B6B6B);
 Color borderColorRecentBook = Color(0xFFF3F3F3);
+Color transparent = Colors.transparent;
 
 // semibold text
 TextStyle semiBoldText20 =

@@ -1,10 +1,30 @@
+import 'package:e_book_app/models/book.dart';
 import 'package:e_book_app/themes.dart';
 import 'package:flutter/material.dart';
 import 'components/recent_book.dart';
+import 'components/trending_book.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  static const nameRoute = '/home';
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<String> _categories = [
+    'All Book',
+    'Novel',
+    'Manga',
+    'Fairy Tales',
+    'Majalah',
+    'Komik',
+    'Ensiklopedia',
+    'Biografi',
+    'Naskah'
+  ];
+  int _isSelected = 0;
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -100,14 +120,75 @@ class HomePage extends StatelessWidget {
             ),
             RecentBook(
                 image: 'assets/images/recentbook_2.png', title: 'The Martian'),
+            SizedBox(
+              width: 20,
+            ),
+            RecentBook(
+                image: 'assets/images/recentbook_1.png', title: 'The Magic'),
+            SizedBox(
+              width: 20,
+            ),
+            RecentBook(
+                image: 'assets/images/recentbook_2.png', title: 'The Martian'),
           ],
         ),
       );
     }
 
-    Widget categories() {
-      return Container(
-        margin: EdgeInsets.symmetric(vertical: 30),
+    Widget categories(int index) {
+      return InkWell(
+        onTap: () {
+          setState(
+            () {
+              _isSelected = index;
+            },
+          );
+        },
+        child: Container(
+          margin: EdgeInsets.only(top: 30, right: 12),
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+          decoration: BoxDecoration(
+            color: _isSelected == index ? greenColor : transparent,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            _categories[index],
+            style: semiBoldText14.copyWith(
+                color: _isSelected == index ? whiteColor : greyColor),
+          ),
+        ),
+      );
+    }
+
+    Widget listCategories() {
+      return SingleChildScrollView(
+        padding: EdgeInsets.only(left: 30),
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: _categories
+              .asMap()
+              .entries
+              .map((MapEntry map) => categories(map.key))
+              .toList(),
+        ),
+      );
+    }
+
+    Widget trendingBook() {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 30),
+        child: Row(
+          children: bookList
+              .asMap()
+              .entries
+              .map(
+                (MapEntry map) => TrendingBook(
+                  info: bookList[map.key],
+                ),
+              )
+              .toList(),
+        ),
       );
     }
 
@@ -145,6 +226,18 @@ class HomePage extends StatelessWidget {
                   recentBook(),
                 ],
               ),
+            ),
+            listCategories(),
+            Padding(
+              padding: EdgeInsets.only(left: 30, top: 30),
+              child: Text(
+                'Trending Now',
+                style: semiBoldText16.copyWith(color: blackColor),
+              ),
+            ),
+            trendingBook(),
+            SizedBox(
+              height: 30,
             ),
           ],
         ));
